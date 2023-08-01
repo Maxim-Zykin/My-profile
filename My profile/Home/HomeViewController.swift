@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UICollectionViewDelegate {
 
     
     @IBOutlet weak var profilePhotoImage: UIImageView!
@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var aboutYourselfLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     private var viewModel: HomeViewModel! {
         didSet{
@@ -28,8 +29,29 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.dataSource = self
+        collectionView.delegate = self
         viewModel = HomeViewModel()
     }
+    
+    @IBAction func addSkill(_ sender: Any) {
+            let alert = UIAlertController(title: "Добавление навыка", message: "Введите название навыка которым вы владеете", preferredStyle: .alert)
+            
+            let saveAction = UIAlertAction(title: "Добавить", style: .default) { _ in
+                guard let addSkill = alert.textFields?.first?.text, !addSkill.isEmpty else { return }
+                let skill = Skills(name: addSkill)
+                mySkills.append(skill)
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
+            
+            let cancelAction = UIAlertAction(title: "Отмена", style: .destructive)
+            alert.addTextField()
+            alert.addAction(saveAction)
+            alert.addAction(cancelAction)
+            present(alert, animated: true)
+        }
 }
 
 extension HomeViewController: UICollectionViewDataSource {
@@ -44,3 +66,4 @@ extension HomeViewController: UICollectionViewDataSource {
         return cell
     }
 }
+
