@@ -153,14 +153,14 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="w0h-DV-RX9"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="2D9-HV-ci1"/>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqI-II-Vgr">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqI-II-Vgr">
                                 <rect key="frame" x="348" y="390" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="hGe-OO-DIm"/>
                                     <constraint firstAttribute="height" constant="24" id="s4h-bt-qC7"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Frame"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
                                 <connections>
                                     <action selector="addSkill:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ujR-M1-qwF"/>
                                 </connections>
@@ -184,6 +184,7 @@
                         <outlet property="aboutYourselfLabel" destination="yos-do-8fk" id="PL6-t7-7HW"/>
                         <outlet property="cityLabel" destination="9PI-2h-0ZW" id="G5v-dg-Yu6"/>
                         <outlet property="collectionView" destination="WsM-fQ-OgX" id="1bQ-e7-Waa"/>
+                        <outlet property="correctSkillsButton" destination="hqI-II-Vgr" id="KtW-pg-ETz"/>
                         <outlet property="infoLabel" destination="6dp-p6-n3M" id="4Mf-Yu-uW2"/>
                         <outlet property="nameLastLabel" destination="1rQ-kG-qc1" id="Pzo-zu-7fy"/>
                         <outlet property="profilePhotoImage" destination="0Eq-UH-lw8" id="4Hl-zi-6tD"/>
@@ -196,6 +197,7 @@
         <!--View Controller-->
         <scene sceneID="RPR-Rf-tgp">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9zP-Xb-Wak" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="ZX1-Mw-FIT" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1ix-0h-ZrW">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
@@ -205,7 +207,6 @@
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" style="editor" id="sJb-kC-Yby"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9zP-Xb-Wak" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1692" y="4"/>
         </scene>
@@ -229,7 +230,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Frame" width="24" height="24"/>
         <image name="Vector" width="10" height="14"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

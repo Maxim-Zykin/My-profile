@@ -24,6 +24,4 @@ class HomeCollectionViewCellModel: HomeCollectionViewCellModelProtocol {
     required init(skills: Skills) {
         self.scills = skills
     }
-    
-    
 }

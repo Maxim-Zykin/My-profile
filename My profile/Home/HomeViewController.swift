@@ -10,12 +10,24 @@ import UIKit
 class HomeViewController: UIViewController, UICollectionViewDelegate {
 
     
-    @IBOutlet weak var profilePhotoImage: UIImageView!
+    @IBOutlet weak var profilePhotoImage: UIImageView! {
+        didSet {
+            profilePhotoImage.layer.cornerRadius = profilePhotoImage.frame.width / 2
+        }
+    }
+    
     @IBOutlet weak var nameLastLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var aboutYourselfLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var correctSkillsButton: UIButton! {
+        didSet {
+            correctSkillsButton.setImage(UIImage(named: "correct"), for: .normal)
+        }
+    }
+    
+    var correctState = false
     
     private var viewModel: HomeViewModel! {
         didSet{
@@ -35,6 +47,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
     }
     
     @IBAction func addSkill(_ sender: Any) {
+        if !correctState {
+            correctSkillsButton.setImage(UIImage(named: "done"), for: .normal)
+        } else {
+            correctSkillsButton.setImage(UIImage(named: "correct"), for: .normal)
+        }
+        correctState = !correctState
+        
             let alert = UIAlertController(title: "Добавление навыка", message: "Введите название навыка которым вы владеете", preferredStyle: .alert)
             
             let saveAction = UIAlertAction(title: "Добавить", style: .default) { _ in
@@ -48,8 +67,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
             
             let cancelAction = UIAlertAction(title: "Отмена", style: .destructive)
             alert.addTextField()
-            alert.addAction(saveAction)
             alert.addAction(cancelAction)
+            alert.addAction(saveAction)
             present(alert, animated: true)
         }
 }
@@ -57,6 +76,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
 extension HomeViewController: UICollectionViewDataSource {
    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        //return correctState ? viewModel.numberOfRows() + 1 : viewModel.numberOfRows()
         viewModel.numberOfRows()
     }
     

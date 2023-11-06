@@ -24,7 +24,7 @@ class HomeViewModel: HomeViewModelProtocol {
     }
     
     var title: String {
-        "iOS developer, 27 лет"
+        "iOS developer, 28 лет"
     }
     
     var city: String {
